@@ -53,7 +53,8 @@
     "lint": "vendor/bin/phpstan analyse -l 5 src tests -c phpstan.neon",
     "phparkitect": "phparkitect check",
     "rector-fix": "rector",
-    "rector-preview": "rector --dry-run"
+    "rector-preview": "rector --dry-run",
+    "test": "./vendor/bin/phpunit"
   },
   "scripts-descriptions": {
     "check": "Checking the code against the PSR-12 coding standard, linting and running PHPStan",
@@ -62,6 +63,7 @@
     "lint": "Linting the code with PHPStan",
     "phparkitect": "Checking the code conforms to the PHParkitect rules",
     "rector-fix": "Fixing the code according to the Rector Rules",
-    "rector-preview": "Showing the suggested changes from Rector"
+    "rector-preview": "Showing the suggested changes from Rector",
+    "test": "Running the unit tests"
   }
 }
