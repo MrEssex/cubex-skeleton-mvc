@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+
+<ruleset name="Project Ruleset">
+
+  <description>PHPCS configuration file.</description>
+
+  <file>src</file>
+  <file>public</file>
+  <file>transport</file>
+  <file>tests</file>
+
+  <exclude-pattern>*/Cli/*</exclude-pattern>
+  <exclude-pattern>*/*.(css|js)</exclude-pattern>
+  <exclude-pattern>*/tests/*</exclude-pattern>
+
+  <!-- ignore warnings and display ERRORS only -->
+  <arg value="np"/>
+
+  <rule ref="./vendor/packaged/codestandards/ruleset.xml">
+    <exclude name="PEAR.Functions.FunctionCallSignature.ContentAfterOpenBracket"/>
+    <exclude name="PEAR.Functions.FunctionCallSignature.CloseBracketLine"/>
+  </rule>
+
+</ruleset>

@@ -1,0 +1,63 @@
+name: Build
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  build-test:
+    runs-on: ubuntu-latest
+
+    name: PHP ${{ matrix.php }} Build
+
+    strategy:
+      fail-fast: false
+      matrix:
+        php: [ '8.2' ]
+        node: [ '20' ]
+
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          persist-credentials: false
+
+      - uses: ./.github/actions/build
+        with:
+          php_version: ${{ matrix.php }}
+          node_version: ${{ matrix.node }}
+
+  coverage:
+    runs-on: ubuntu-latest
+
+    name: Tests & Coverage Reporter
+
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          persist-credentials: false
+
+      - run: git config --global credential.helper store
+
+      - uses: ./.github/actions/build
+
+      - run: composer run-script test
+
+      - run: npm run coverage
+
+  lint:
+    runs-on: ubuntu-latest
+
+    name: Linter
+
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          persist-credentials: false
+
+      - uses: ./.github/actions/build
+
+      - run: composer run-script check
+
+      - run: npm run lint

@@ -1,0 +1,14 @@
+#!/usr/bin/env php
+<?php
+
+use Cubex\Cubex;
+use MrEssex\CubexCli\CliWrapper;
+
+$loader = require('vendor/autoload.php');
+
+$app = new Cubex(__DIR__, $loader);
+
+CliWrapper::initialise($app);
+CliWrapper::initialiseAlternativeRoot($app, 'mressex/cubex-translate');
+
+exit($app->cli());
