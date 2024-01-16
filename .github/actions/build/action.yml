@@ -1,5 +1,5 @@
-name: "PHP ${{ matrix.php }} Build"
-description: "Builds the project with PHP ${{ matrix.php }} and Node ${{ matrix.node }}"
+name: "PHP  Build"
+description: "Builds the project with PHP  and Node"
 
 inputs:
   php_version:
