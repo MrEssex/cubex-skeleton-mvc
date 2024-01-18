@@ -25,8 +25,6 @@ class Dispatcher implements Handler
     $dispatch->addComponentAlias('MrEssex\\CubexSkeleton\\Modules', 'mres');
     $dispatch->addComponentAlias('MrEssex\\CubexSkeleton\\UI', 'ures');
 
-    Dispatch::bind($dispatch);
-
     return $dispatch;
   }
 

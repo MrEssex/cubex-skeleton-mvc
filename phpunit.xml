@@ -1,24 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<phpunit backupGlobals="false"
          bootstrap="vendor/autoload.php"
          colors="true"
-         xsi:noNamespaceSchemaLocation="https://schema.phpunit.de/10.2/phpunit.xsd">
+         processIsolation="false"
+         stopOnFailure="false">
 
   <testsuites>
-    <testsuite name="Project Test Suite">
+    <testsuite name="Unit Tests">
       <directory>tests</directory>
     </testsuite>
   </testsuites>
-
+  
   <coverage/>
-
-  <php>
-    <env name="APP_ENV" value="testing"/>
-  </php>
 
   <source>
     <include>
       <directory>src/</directory>
+      <directory>transport/</directory>
     </include>
   </source>
 

@@ -70,7 +70,7 @@ abstract class LayoutController extends AuthedController implements TranslatorAw
   public function handle(Context $c): Response
   {
     $middleware = new MiddlewareHandler(
-      new FuncHandler(fn(Context $c): \Symfony\Component\HttpFoundation\Response => parent::handle($c))
+      new FuncHandler(fn(Context $c): Response => parent::handle($c))
     );
     foreach($this->_middleware() as $m)
     {
