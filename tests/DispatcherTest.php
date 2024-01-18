@@ -4,6 +4,7 @@ namespace MrEssex\CubexSkeleton\Tests;
 use MrEssex\CubexSkeleton\Dispatcher;
 use Packaged\Config\ConfigProviderInterface;
 use Packaged\Context\Context;
+use Packaged\Dispatch\Dispatch;
 use Packaged\Dispatch\ResourceManager;
 use Packaged\Dispatch\ResourceStore;
 use Packaged\Helpers\ValueAs;
@@ -78,5 +79,15 @@ class DispatcherTest extends SharedTestCase
     self::assertTrue(ValueAs::bool($config->getItem('optimisation', 'webp')));
     self::assertTrue(ValueAs::bool($config->getItem('ext.css', 'sourcemap')));
     self::assertTrue(ValueAs::bool($config->getItem('ext.js', 'sourcemap')));
+  }
+
+  public function testDispatchShouldNotBeGlobal(): void
+  {
+    $ctx = $this->_testContext();
+
+    // Create Dispatch
+    Dispatcher::create($ctx);
+
+    self::assertEmpty(Dispatch::instance());
   }
 }
