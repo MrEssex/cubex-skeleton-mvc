@@ -23,7 +23,7 @@ class DispatcherTest extends SharedTestCase
     self::assertEquals('File Not Found', $response->getContent());
   }
 
-  public function testHandleAddResource()
+  public function testHandleAddResource(): void
   {
     $ctx = $this->_testContext();
     $dispatch = Dispatcher::create($ctx);

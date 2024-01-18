@@ -29,7 +29,7 @@ class SharedTestCase extends TestCase
     return $cubex;
   }
 
-  protected function _testContext(Request $request = null, $env = Context::ENV_LOCAL): \Packaged\Context\Context
+  protected function _testContext(Request $request = null, string $env = Context::ENV_LOCAL): \Packaged\Context\Context
   {
     $cubex = $this->_createCubex();
     $ctx = new Context($request);
