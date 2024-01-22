@@ -5,6 +5,7 @@ namespace MrEssex\CubexSkeleton;
 use Cubex\Context\Context;
 use Cubex\Cubex;
 use Cubex\CubexAware;
+use MrEssex\CubexSkeleton\Services\Interfaces\DatabaseService;
 use MrEssex\CubexSkeleton\Services\LocalDatabaseService;
 use Packaged\Context\Context as ContextAlias;
 use Packaged\Dispatch\Dispatch;
@@ -18,14 +19,15 @@ class Dependencies
     /** @var Context $ctx */
     $ctx = $cubex->getContext();
 
-    // Database
-    $database = new LocalDatabaseService();
-    $database->registerDatabaseConnections($ctx->getProjectRoot(), $ctx->getEnvironment());
-
-    $cubex->share(LocalDatabaseService::class, $database);
-
     // Translations
     $ctx->prepareTranslator($ctx->getProjectRoot() . '/translations/');
+
+    // Share if not already shared
+    if(!$cubex->isAvailable(DatabaseService::class))
+    {
+      // Database
+      self::_injectDatabase($cubex);
+    }
 
     // Inject env specific
     match ($ctx->getEnvironment())
@@ -66,5 +68,17 @@ class Dependencies
       Dispatcher::create($cubex->getContext(), Dispatcher::DISPATCH_PATH),
       Cubex::MODE_IMMUTABLE
     );
+  }
+
+  protected static function _injectDatabase(Cubex $cubex): void
+  {
+    /** @var Context $ctx */
+    $ctx = $cubex->getContext();
+
+    // Database
+    $database = new LocalDatabaseService();
+    $database->registerDatabaseConnections($ctx->getProjectRoot(), $ctx->getEnvironment());
+
+    $cubex->share(LocalDatabaseService::class, $database);
   }
 }

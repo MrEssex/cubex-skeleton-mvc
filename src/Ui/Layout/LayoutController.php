@@ -26,12 +26,13 @@ abstract class LayoutController extends AuthedController implements TranslatorAw
 
   public function __construct(protected Dispatch $dispatch, protected Translator $translator) { }
 
-  public function processError(): ErrorView
+  public function processError(): Response
   {
     $cubex = @$this->_cubex();
     /** @var ErrorView $error */
     $error = $cubex->resolve(ErrorView::class);
-    return $error;
+
+    return Response::create($error->render(), 404);
   }
 
   protected function _prepareResponse(Context $c, $result, $buffer = null)

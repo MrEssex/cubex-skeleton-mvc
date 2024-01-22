@@ -8,6 +8,6 @@ class ErrorView extends AbstractView
 {
   public function getBlockName(): string
   {
-    return 'error-view';
+    return 'error';
   }
 }
