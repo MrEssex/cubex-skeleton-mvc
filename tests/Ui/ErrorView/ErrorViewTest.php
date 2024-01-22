@@ -8,13 +8,13 @@ use Packaged\Http\Request;
 
 class ErrorViewTest extends SharedTestCase
 {
-  public function testGetBlockName()
+  public function testGetBlockName(): void
   {
     $view = new ErrorView();
     $this->assertEquals('error', $view->getBlockName());
   }
 
-  public function testErrorPageRenderedOnUnknownRoutes()
+  public function testErrorPageRenderedOnUnknownRoutes(): void
   {
 
     $request = Request::create('/error/unknown');

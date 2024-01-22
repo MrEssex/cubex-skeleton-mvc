@@ -9,19 +9,19 @@ use PHPUnit\Framework\TestCase;
 
 class CreateExampleEndpointTest extends TestCase
 {
-  public function testGetVerb()
+  public function testGetVerb(): void
   {
     $endpoint = new CreateExampleEndpoint();
     $this->assertEquals('POST', $endpoint->getVerb());
   }
 
-  public function testGetResponseClass()
+  public function testGetResponseClass(): void
   {
     $endpoint = new CreateExampleEndpoint();
     $this->assertEquals(ExampleResponse::class, $endpoint->getResponseClass());
   }
 
-  public function testGetPayloadClass()
+  public function testGetPayloadClass(): void
   {
     $endpoint = new CreateExampleEndpoint();
     $this->assertEquals(CreateExamplePayload::class, $endpoint->getPayloadClass());

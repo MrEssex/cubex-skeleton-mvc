@@ -48,7 +48,7 @@ class SharedTestCase extends TestCase
     return $cubex->handle(new DashboardApplication($cubex), false);
   }
 
-  public function errorLogStartListening()
+  public function errorLogStartListening(): void
   {
 
     $this->errorLogTmpfile = tmpfile();

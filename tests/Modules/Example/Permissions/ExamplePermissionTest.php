@@ -7,7 +7,7 @@ use PHPUnit\Framework\TestCase;
 
 class ExamplePermissionTest extends TestCase
 {
-  public function testGetKey()
+  public function testGetKey(): void
   {
     $permission = new ExamplePermission();
     $this->assertEquals('example', $permission->getKey());

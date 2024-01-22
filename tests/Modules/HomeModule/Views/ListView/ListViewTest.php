@@ -7,7 +7,7 @@ use MrEssex\CubexSkeleton\Tests\SharedTestCase;
 
 class ListViewTest extends SharedTestCase
 {
-  public function testGetBlockName()
+  public function testGetBlockName(): void
   {
     $view = new ListView();
     $this->assertEquals('list', $view->getBlockName());

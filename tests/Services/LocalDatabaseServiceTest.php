@@ -8,7 +8,7 @@ use PHPUnit\Framework\TestCase;
 
 class LocalDatabaseServiceTest extends TestCase
 {
-  public function testRegisterDatabaseConnections()
+  public function testRegisterDatabaseConnections(): void
   {
     $service = new LocalDatabaseService();
     $database = $service->registerDatabaseConnections(__DIR__ . '/../../');

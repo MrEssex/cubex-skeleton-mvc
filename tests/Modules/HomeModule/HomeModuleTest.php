@@ -8,13 +8,13 @@ use MrEssex\CubexSkeleton\Tests\SharedTestCase;
 
 class HomeModuleTest extends SharedTestCase
 {
-  public function testGetBaseRoute()
+  public function testGetBaseRoute(): void
   {
     $module = new HomeModule();
     $this->assertEquals('', $module->baseRoute());
   }
 
-  public function testDefaultHandlerString()
+  public function testDefaultHandlerString(): void
   {
     $module = new HomeModule();
     $this->assertEquals(HomeController::class, $module->defaultHandlerString());

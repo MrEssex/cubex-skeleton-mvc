@@ -7,7 +7,7 @@ use Packaged\Http\Request;
 
 class HomeControllerTest extends SharedTestCase
 {
-  public function testGetHomeRoute()
+  public function testGetHomeRoute(): void
   {
     $request = Request::create('/');
     $response = $this->_handleRequest($request);
@@ -16,7 +16,7 @@ class HomeControllerTest extends SharedTestCase
     $this->assertStringContainsString('This is the Home View', $response->getContent());
   }
 
-  public function testGetListRoute()
+  public function testGetListRoute(): void
   {
     $request = Request::create('/list');
     $response = $this->_handleRequest($request);

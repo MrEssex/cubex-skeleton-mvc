@@ -8,7 +8,7 @@ use Packaged\DalSchema\Databases\Mysql\MySQLKeyType;
 
 class ExampleTest extends SharedTestCase
 {
-  public function testSchemaIsCorrect()
+  public function testSchemaIsCorrect(): void
   {
     $example = new Example();
     $table = $example->getDaoSchema();

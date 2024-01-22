@@ -14,21 +14,21 @@ class MockDataStore extends AbstractDataStore
 
   public function load(IDao $dao)
   {
-    // TODO: Implement load() method.
+    return $dao;
   }
 
   public function delete(IDao $dao)
   {
-    // TODO: Implement delete() method.
+    return $dao;
   }
 
   public function exists(IDao $dao)
   {
-    // TODO: Implement exists() method.
+    return true;
   }
 
   protected function _doDelete(IDao $dao)
   {
-    // TODO: Implement _doDelete() method.
+    return $dao;
   }
 }

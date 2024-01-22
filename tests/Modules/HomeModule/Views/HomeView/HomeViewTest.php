@@ -7,7 +7,7 @@ use PHPUnit\Framework\TestCase;
 
 class HomeViewTest extends TestCase
 {
-  public function testGetBlockName()
+  public function testGetBlockName(): void
   {
     $view = new HomeView();
     $this->assertEquals('home', $view->getBlockName());

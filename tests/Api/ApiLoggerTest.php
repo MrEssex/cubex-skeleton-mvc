@@ -8,7 +8,7 @@ use PHPUnit\Framework\TestCase;
 
 class ApiLoggerTest extends SharedTestCase
 {
-  public function testFormatThrowable()
+  public function testFormatThrowable(): void
   {
     $throwable = new \Exception('Test Exception');
     $formatted = ApiLogger::formatThrowable($throwable);
@@ -18,7 +18,7 @@ class ApiLoggerTest extends SharedTestCase
     $this->assertStringContainsString('Trace: ', $formatted);
   }
 
-  public function testAsError()
+  public function testAsError(): void
   {
     $throwable = new \Exception('Test Exception');
     $this->errorLogStartListening();
