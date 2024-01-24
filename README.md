@@ -1,6 +1,7 @@
 # Cubex Skeleton MVC
 
-This is a skeleton project for Cubex MVC applications.
+This is a skeleton project for Cubex MVC applications. With some basic integration/unit tests and some real basic
+examples.
 
 ## Table of Contents
 

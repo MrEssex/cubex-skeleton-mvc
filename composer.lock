@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "ad8d61675ebda4718c76330a871c294e",
+    "content-hash": "2e4b14e497680a1ca6afa5f508cbb6ad",
     "packages": [
         {
             "name": "cubex/api-foundation",
@@ -1311,16 +1311,16 @@
         },
         {
             "name": "mressex/cubex-translate",
-            "version": "0.2.0",
+            "version": "0.3.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/MrEssex/cubex-translate.git",
-                "reference": "6826af7124978fb037e55fef8ad6bce9473feb75"
+                "reference": "f653980b20cfb27387364ecc8e9dcd0625da668e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/MrEssex/cubex-translate/zipball/6826af7124978fb037e55fef8ad6bce9473feb75",
-                "reference": "6826af7124978fb037e55fef8ad6bce9473feb75",
+                "url": "https://api.github.com/repos/MrEssex/cubex-translate/zipball/f653980b20cfb27387364ecc8e9dcd0625da668e",
+                "reference": "f653980b20cfb27387364ecc8e9dcd0625da668e",
                 "shasum": ""
             },
             "require": {
@@ -1353,9 +1353,9 @@
             "description": "Translate Cubex Framework",
             "support": {
                 "issues": "https://github.com/MrEssex/cubex-translate/issues",
-                "source": "https://github.com/MrEssex/cubex-translate/tree/0.2.0"
+                "source": "https://github.com/MrEssex/cubex-translate/tree/0.3.0"
             },
-            "time": "2024-01-24T13:39:34+00:00"
+            "time": "2024-01-24T16:56:08+00:00"
         },
         {
             "name": "packaged-ui/bem-component",
@@ -4793,16 +4793,16 @@
         },
         {
             "name": "phparkitect/phparkitect",
-            "version": "0.3.28",
+            "version": "0.3.29",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phparkitect/arkitect.git",
-                "reference": "e29c207432d84f3fb7c2bfed3d15642583977d30"
+                "reference": "80f42bd8d1b1450c3f79589c5e1e374fffddb085"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phparkitect/arkitect/zipball/e29c207432d84f3fb7c2bfed3d15642583977d30",
-                "reference": "e29c207432d84f3fb7c2bfed3d15642583977d30",
+                "url": "https://api.github.com/repos/phparkitect/arkitect/zipball/80f42bd8d1b1450c3f79589c5e1e374fffddb085",
+                "reference": "80f42bd8d1b1450c3f79589c5e1e374fffddb085",
                 "shasum": ""
             },
             "require": {
@@ -4860,7 +4860,7 @@
             "description": "Enforce architectural constraints in your PHP applications",
             "support": {
                 "issues": "https://github.com/phparkitect/arkitect/issues",
-                "source": "https://github.com/phparkitect/arkitect/tree/0.3.28"
+                "source": "https://github.com/phparkitect/arkitect/tree/0.3.29"
             },
             "funding": [
                 {
@@ -4872,7 +4872,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2024-01-16T11:30:09+00:00"
+            "time": "2024-01-24T14:49:00+00:00"
         },
         {
             "name": "phpstan/phpstan",

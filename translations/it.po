@@ -13,3 +13,10 @@ msgstr ""
 #, fuzzy
 msgid "This is the List View"
 msgstr "Questa è la visualizzazione elenco"
+
+#: 73f084d0d14d854e10fd0fb8e4d4f5a0
+#, fuzzy
+msgid "Terminate your Subscription"
+msgid_plural "Terminate your Subscriptions"
+msgstr[0] "Termina il tuo abbonamento"
+msgstr[1] "Termina i tuoi abbonamenti"
