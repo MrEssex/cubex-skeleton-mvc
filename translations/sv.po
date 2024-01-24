@@ -1,0 +1,15 @@
+msgid ""
+msgstr ""
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Packaged I18n 1.0\n"
+"Language: sv\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+
+# This is the List View
+#: this_is_the_list_view_5dd1a1_21
+#, fuzzy
+msgid "This is the List View"
+msgstr "Detta är listvyn"

@@ -18,9 +18,13 @@ class Dependencies
   {
     /** @var Context $ctx */
     $ctx = $cubex->getContext();
+    $environment = $ctx->getEnvironment();
 
     // Translations
-    $ctx->prepareTranslator($ctx->getProjectRoot() . '/translations/');
+    $ctx->prepareTranslator(
+      '/translations/',
+      in_array($environment, [ContextAlias::ENV_LOCAL, ContextAlias::ENV_DEV], true)
+    );
 
     // Share if not already shared
     if(!$cubex->isAvailable(DatabaseService::class))
@@ -30,7 +34,7 @@ class Dependencies
     }
 
     // Inject env specific
-    match ($ctx->getEnvironment())
+    match ($environment)
     {
       ContextAlias::ENV_LOCAL, ContextAlias::ENV_DEV => self::injectDev($cubex),
       default => self::injectProd($cubex),
