@@ -6,7 +6,7 @@
     "cubex/api-foundation": "^0.5.0",
     "cubex/framework": "^4.20.0",
     "mressex/cubex-cli": "^0.1.0",
-    "mressex/cubex-translate": "^0.3.0",
+    "mressex/cubex-translate": "^0.4.0",
     "packaged-ui/bem-component": "^1.2",
     "packaged-ui/pagelets": "^2.3.11",
     "packaged/dal": "^1.18",
