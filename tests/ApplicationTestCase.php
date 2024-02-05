@@ -4,7 +4,7 @@ namespace MrEssex\CubexSkeleton\Tests;
 
 use Packaged\Http\Request;
 
-class DashboardApplicationTest extends SharedTestCase
+class ApplicationTestCase extends SharedTestCase
 {
   public function testGetPublicResource(): void
   {

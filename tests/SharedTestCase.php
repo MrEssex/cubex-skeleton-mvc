@@ -3,7 +3,7 @@ namespace MrEssex\CubexSkeleton\Tests;
 
 use Cubex\Context\Context;
 use Cubex\Cubex;
-use MrEssex\CubexSkeleton\DashboardApplication;
+use MrEssex\CubexSkeleton\MainApplication;
 use MrEssex\CubexSkeleton\Services\Interfaces\DatabaseService;
 use MrEssex\CubexSkeleton\Tests\Mocks\MockDatabaseService;
 use Packaged\Http\Request;
@@ -45,7 +45,7 @@ class SharedTestCase extends TestCase
   protected function _handleRequest(Request $request)
   {
     $cubex = $this->_createCubex($request);
-    return $cubex->handle(new DashboardApplication($cubex), false);
+    return $cubex->handle(new MainApplication($cubex), false);
   }
 
   public function errorLogStartListening(): void

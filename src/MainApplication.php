@@ -17,7 +17,7 @@ use Packaged\Routing\HealthCheckCondition;
 use Packaged\Routing\Route;
 use Packaged\Routing\Routes\InsecureRequestUpgradeRoute;
 
-class DashboardApplication extends Application
+class MainApplication extends Application
 {
   protected function _generateRoutes()
   {

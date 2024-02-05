@@ -4,7 +4,7 @@ define('PHP_START', microtime(true));
 
 use Composer\Autoload\ClassLoader;
 use Cubex\Cubex;
-use MrEssex\CubexSkeleton\DashboardApplication;
+use MrEssex\CubexSkeleton\MainApplication;
 use Packaged\Context\Conditions\ExpectEnvironment;
 use Whoops\Handler\PrettyPageHandler;
 use Whoops\Run;
@@ -17,7 +17,7 @@ $loader = require($projectRoot . '/vendor/autoload.php');
 try
 {
   $cubex = new Cubex($projectRoot, $loader);
-  $cubex->handle(new DashboardApplication($cubex));
+  $cubex->handle(new MainApplication($cubex));
 }
 catch(Throwable $throwable)
 {
