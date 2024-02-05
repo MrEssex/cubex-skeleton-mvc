@@ -8,7 +8,7 @@ use Packaged\I18n\TranslatorAware;
 use Packaged\I18n\TranslatorAwareTrait;
 use Packaged\Ui\Element;
 
-abstract class AbstractLayout extends Element implements Layout, TranslatorAware
+abstract class AbstractLayout extends Element implements TranslatorAware
 {
   use TranslatorAwareTrait;
   use TranslatableTrait;

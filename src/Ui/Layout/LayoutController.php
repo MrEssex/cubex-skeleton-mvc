@@ -60,7 +60,7 @@ abstract class LayoutController extends AuthedController implements TranslatorAw
     return parent::_prepareResponse($c, $theme, $buffer);
   }
 
-  public function getTheme(): DefaultLayout
+  public function getTheme(): AbstractLayout
   {
     $cubex = @$this->_cubex();
     /** @var DefaultLayout $layout */
