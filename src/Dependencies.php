@@ -5,8 +5,8 @@ namespace MrEssex\CubexSkeleton;
 use Cubex\Context\Context;
 use Cubex\Cubex;
 use Cubex\CubexAware;
-use MrEssex\CubexSkeleton\Services\Interfaces\DatabaseService;
-use MrEssex\CubexSkeleton\Services\LocalDatabaseService;
+use Illuminate\Container\Container;
+use Illuminate\Database\Capsule\Manager;
 use MrEssex\CubexSkeleton\System\Ui\Dispatcher;
 use Packaged\Context\Context as ContextAlias;
 use Packaged\Dispatch\Dispatch;
@@ -26,13 +26,6 @@ class Dependencies
       '/translations/',
       in_array($environment, [ContextAlias::ENV_LOCAL, ContextAlias::ENV_DEV], true)
     );
-
-    // Share if not already shared
-    if(!$cubex->isAvailable(DatabaseService::class))
-    {
-      // Database
-      self::_injectDatabase($cubex);
-    }
 
     // Inject env specific
     match ($environment)
@@ -75,15 +68,31 @@ class Dependencies
     );
   }
 
-  protected static function _injectDatabase(Cubex $cubex): void
+  public static function bootEloquent(Cubex $cubex): Manager
   {
-    /** @var Context $ctx */
-    $ctx = $cubex->getContext();
+    $config = $cubex->getContext()->config()->getSection('eloquent');
 
-    // Database
-    $database = new LocalDatabaseService();
-    $database->registerDatabaseConnections($ctx->getProjectRoot(), $ctx->getEnvironment());
+    $capsule = new Manager();
+    $capsule->addConnection([
+      'driver'    => $config->getItem('driver', 'mysql'),
+      'host'      => $config->getItem('host', 'localhost'),
+      'database'  => $config->getItem('database', 'database'),
+      'username'  => $config->getItem('username', 'root'),
+      'password'  => $config->getItem('password', ''),
+      'charset'   => $config->getItem('charset', 'utf8'),
+      'collation' => $config->getItem('collation', 'utf8_unicode_ci'),
+      'prefix'    => $config->getItem('prefix', ''),
+    ]);
 
-    $cubex->share(LocalDatabaseService::class, $database);
+    // Set the event dispatcher used by Eloquent models...
+    $capsule->setEventDispatcher(new \Illuminate\Events\Dispatcher(new Container()));
+
+    // Make this Capsule instance available globally via static methods...
+    $capsule->setAsGlobal();
+
+    // Boot Eloquent
+    $capsule->bootEloquent();
+
+    return $capsule;
   }
 }

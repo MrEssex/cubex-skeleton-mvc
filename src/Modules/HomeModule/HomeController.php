@@ -20,7 +20,6 @@ class HomeController extends LayoutController
   {
     /** @var HomeView $homeView */
     $homeView = $this->_cubex()->resolve(HomeView::class);
-
     return $homeView;
   }
 

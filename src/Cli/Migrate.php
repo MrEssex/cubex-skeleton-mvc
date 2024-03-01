@@ -2,50 +2,34 @@
 
 namespace MrEssex\CubexSkeleton\Cli;
 
-use Exception;
 use MrEssex\CubexCli\ConsoleCommand;
-use MrEssex\CubexSkeleton\Services\LocalDatabaseService;
-use Packaged\Dal\Exceptions\DalResolver\ConnectionNotFoundException;
-use Packaged\Dal\Exceptions\DalResolver\DataStoreNotFoundException;
-use Packaged\Dal\Foundation\Dao;
-use Packaged\Dal\Ql\AbstractQlConnection;
-use Packaged\Dal\Ql\QlDataStore;
-use Packaged\DalSchema\DalSchema;
-use ReflectionException;
+use MrEssex\CubexSkeleton\Cli\Helpers\PhinxConfig;
+use Phinx\Console\Command\Migrate as PhinxMigrate;
 use Symfony\Component\Console\Input\InputInterface;
+use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 
 class Migrate extends ConsoleCommand
 {
-  /**
-   * @throws ReflectionException
-   * @throws DataStoreNotFoundException
-   * @throws ConnectionNotFoundException
-   * @throws Exception
-   */
-  public function executeCommand(InputInterface $input, OutputInterface $output): void
+  protected function configure(): void
   {
-    $schemas = DalSchema::findSchemas(dirname(__DIR__), 'MrEssex\\CubexSkeleton\\');
-    $ctx = $this->getContext();
-    $service = new LocalDatabaseService();
-    $service->registerDatabaseConnections($ctx->getProjectRoot(), $ctx->getEnvironment());
+    $this->setDescription('Migrate the database')
+      ->addOption('--environment', '-e', InputOption::VALUE_REQUIRED, 'The target environment', 'dev')
+      ->addOption('--target', '-t', InputOption::VALUE_REQUIRED, 'The version number to migrate to')
+      ->addOption('--date', '-d', InputOption::VALUE_REQUIRED, 'The date to migrate to')
+      ->addOption('--dry-run', '-x', InputOption::VALUE_NONE, 'Dump query to standard output instead of executing it')
+      ->addOption(
+        '--fake',
+        null,
+        InputOption::VALUE_NONE,
+        "Mark any migrations selected as run, but don't actually execute them"
+      );
+  }
 
-    foreach($schemas as $schema)
-    {
-      $schema->getName();
-      $name = 'cubex-base';
-      $resolver = Dao::getDalResolver();
-      $datastore = $resolver->getDataStore($name);
-      if(!$datastore instanceof QlDataStore)
-      {
-        return;
-      }
-
-      /** @var AbstractQlConnection $connection */
-      $connection = $datastore->getConnection();
-
-      $output->writeln('Migrating Table: ' . $schema->getName());
-      DalSchema::migrateTables($connection, $connection->getConfig()->getItem('database'), ...$schemas);
-    }
+  protected function executeCommand(InputInterface $input, OutputInterface $output): void
+  {
+    $command = new PhinxMigrate();
+    $command->setConfig(PhinxConfig::getConfig($this->getContext()));
+    $command->execute($input, $output);
   }
 }

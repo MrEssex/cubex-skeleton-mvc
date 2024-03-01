@@ -48,13 +48,13 @@ cubex serve
 
 ---
 
-### Make Command
+### Make Console Command
 
 A command added by MrEssex/Cubex-CLI. This command will create a new command in the Src/Cli dir with some default
 scaffolding making it easier to get started.
 
 ```shell
-cubex make:command 
+cubex make:console 
 ```
 
 ---

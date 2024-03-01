@@ -9,11 +9,9 @@ ApplicationResponse extends AbstractResponse
 {
   public mixed $id;
 
-  public bool $active;
+  public string $created_at;
 
-  public int $created_at;
-
-  public ?int $updated_at = null;
+  public ?string $updated_at = null;
 
   public ?int $deleted_at = null;
 }

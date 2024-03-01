@@ -59,6 +59,9 @@ class MainApplication extends Application
   {
     $cubex = @$this->getCubex();
 
+    // Database
+    Dependencies::bootEloquent($cubex);
+
     // DI
     Dependencies::inject($cubex);
 
