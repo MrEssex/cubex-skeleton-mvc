@@ -4,8 +4,6 @@ namespace MrEssex\CubexSkeleton\Tests;
 use Cubex\Context\Context;
 use Cubex\Cubex;
 use MrEssex\CubexSkeleton\MainApplication;
-use MrEssex\CubexSkeleton\Services\Interfaces\DatabaseService;
-use MrEssex\CubexSkeleton\Tests\Mocks\MockDatabaseService;
 use Packaged\Http\Request;
 use Packaged\I18n\Translators\ReturnKeyTranslator;
 use Packaged\I18n\Translators\Translator;
@@ -30,10 +28,6 @@ class SharedTestCase extends TestCase
     $cubex->share(\Packaged\Context\Context::class, $ctx);
     $cubex->share(Translator::class, new ReturnKeyTranslator());
 
-    $databaseService = new MockDatabaseService();
-    $databaseService->registerDatabaseConnections($root, $env);
-    $cubex->share(DatabaseService::class, $databaseService);
-
     return $cubex;
   }
 
@@ -56,7 +50,7 @@ class SharedTestCase extends TestCase
     $this->errorLogLocationBackup = ini_set('error_log', $streamUri);
   }
 
-  public function errorLogGetContents()
+  public function errorLogGetContents(): false|string
   {
 
     ini_set('error_log', $this->errorLogLocationBackup);

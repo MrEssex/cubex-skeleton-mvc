@@ -5,6 +5,3 @@ parameters:
     - transport
     - public
     - tests
-  ignoreErrors:
-    - '#^Call to an undefined static method Packaged\\DalSchema\\Databases\\Mysql\\MySQLColumnType::.*$#'
-    - '#^Call to an undefined static method Packaged\\DalSchema\\Databases\\Mysql\\MySQLKeyType::.*$#'

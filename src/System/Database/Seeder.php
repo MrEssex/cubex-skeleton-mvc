@@ -26,7 +26,7 @@ class Seeder extends AbstractSeed
     $this->faker = Factory::create(LanguageCode::EN);
   }
 
-  public function seedDates(array $table)
+  public function seedDates(array $table): array
   {
     $faker = $this->faker;
 
