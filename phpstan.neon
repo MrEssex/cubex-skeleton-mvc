@@ -8,4 +8,3 @@ parameters:
   ignoreErrors:
     - '#^Call to an undefined static method Packaged\\DalSchema\\Databases\\Mysql\\MySQLColumnType::.*$#'
     - '#^Call to an undefined static method Packaged\\DalSchema\\Databases\\Mysql\\MySQLKeyType::.*$#'
-    - "#^Unsafe usage of new static#"

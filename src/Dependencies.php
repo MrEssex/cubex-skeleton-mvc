@@ -7,6 +7,7 @@ use Cubex\Cubex;
 use Cubex\CubexAware;
 use MrEssex\CubexSkeleton\Services\Interfaces\DatabaseService;
 use MrEssex\CubexSkeleton\Services\LocalDatabaseService;
+use MrEssex\CubexSkeleton\System\Ui\Dispatcher;
 use Packaged\Context\Context as ContextAlias;
 use Packaged\Dispatch\Dispatch;
 use Packaged\I18n\TranslatorAware;

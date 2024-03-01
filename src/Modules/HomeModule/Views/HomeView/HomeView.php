@@ -3,7 +3,7 @@
 namespace MrEssex\CubexSkeleton\Modules\HomeModule\Views\HomeView;
 
 use MrEssex\CubexSkeleton\Modules\HomeModule\HomeModule;
-use MrEssex\CubexSkeleton\Ui\AbstractView;
+use MrEssex\CubexSkeleton\System\Ui\AbstractView;
 use Packaged\Dispatch\Dispatch;
 use Packaged\Dispatch\ResourceManager;
 

@@ -5,7 +5,7 @@ namespace MrEssex\CubexSkeleton\Routing;
 use MrEssex\CubexSkeleton\Api\ApiController;
 use MrEssex\CubexSkeleton\Modules\HomeModule\HomeModule;
 use MrEssex\CubexSkeleton\Modules\Module;
-use MrEssex\CubexSkeleton\Ui\Layout\LayoutController;
+use MrEssex\CubexSkeleton\System\Layout\LayoutController;
 
 class Router extends LayoutController
 {

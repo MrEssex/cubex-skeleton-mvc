@@ -3,19 +3,19 @@
 namespace MrEssex\CubexSkeleton;
 
 use Cubex\Application\Application;
-use MrEssex\CubexSkeleton\Routing\PublicResourceCondition;
-use MrEssex\CubexSkeleton\Routing\PublicTextResourceCondition;
+use MrEssex\CubexSkeleton\Routing\ResourceRoute;
 use MrEssex\CubexSkeleton\Routing\Router;
+use MrEssex\CubexSkeleton\Routing\TextResourceRoute;
+use MrEssex\CubexSkeleton\System\Ui\Dispatcher;
 use Packaged\Context\Context;
-use Packaged\Dispatch\Resources\ResourceFactory;
 use Packaged\Helpers\ValueAs;
 use Packaged\Http\Request;
 use Packaged\Http\Response;
-use Packaged\Http\Responses\TextResponse;
 use Packaged\Routing\Handler\Handler;
 use Packaged\Routing\HealthCheckCondition;
 use Packaged\Routing\Route;
 use Packaged\Routing\Routes\InsecureRequestUpgradeRoute;
+use Symfony\Component\HttpFoundation\Response as SymfonyResponse;
 
 class MainApplication extends Application
 {
@@ -24,25 +24,16 @@ class MainApplication extends Application
     $cubex = @$this->getCubex();
 
     // Health check
-    yield Route::with(new HealthCheckCondition())->setHandler(static fn() => Response::create('OK'));
+    yield Route::with(new HealthCheckCondition())
+      ->setHandler(static fn() => Response::create('OK'));
 
     yield self::_route(Dispatcher::DISPATCH_PATH, $cubex->resolve(Dispatcher::class));
 
-    // Public resources
-    yield Route::with(PublicResourceCondition::i())->setHandler(static function () use ($cubex) {
-        $context = $cubex->getContext();
-        return ResourceFactory::fromFile(
-          $context->getProjectRoot() . '/public' . $context->request()->path()
-        );
-    });
+    // Resource Routes
+    yield ResourceRoute::i();
 
-    // Public text resources
-    yield Route::with(PublicTextResourceCondition::i())->setHandler(static function () use ($cubex) {
-        $context = $cubex->getContext();
-        return TextResponse::create(
-          file_get_contents($context->getProjectRoot() . '/public' . $context->request()->path())
-        );
-    });
+    // Text Resource Routes
+    yield TextResourceRoute::i();
 
     $config = $this->getContext()->config();
 
@@ -64,11 +55,6 @@ class MainApplication extends Application
     return parent::_generateRoutes();
   }
 
-  protected function _initApplication(): void
-  {
-
-  }
-
   protected function _setupApplication(): void
   {
     $cubex = @$this->getCubex();
@@ -80,7 +66,7 @@ class MainApplication extends Application
     Dependencies::postResolve($cubex);
   }
 
-  public function handle(Context $c): \Symfony\Component\HttpFoundation\Response
+  public function handle(Context $c): SymfonyResponse
   {
     $cubex = @$this->getCubex();
 
@@ -92,8 +78,9 @@ class MainApplication extends Application
 
   protected function _defaultHandler(): Handler
   {
+    $cubex = @$this->getCubex();
     /** @var Router $router */
-    $router = $this->getCubex()->resolve(Router::class);
+    $router = $cubex->resolve(Router::class);
     return $router;
   }
 }

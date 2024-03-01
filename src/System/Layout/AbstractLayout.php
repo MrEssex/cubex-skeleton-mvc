@@ -1,6 +1,6 @@
 <?php
 
-namespace MrEssex\CubexSkeleton\Ui\Layout;
+namespace MrEssex\CubexSkeleton\System\Layout;
 
 use Packaged\Dispatch\Dispatch;
 use Packaged\I18n\TranslatableTrait;

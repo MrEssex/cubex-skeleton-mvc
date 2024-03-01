@@ -2,9 +2,9 @@
 
 namespace MrEssex\CubexSkeleton\Tests\Ui\Layout\DefaultLayout;
 
-use MrEssex\CubexSkeleton\Dispatcher;
+use MrEssex\CubexSkeleton\System\Layout\DefaultLayout\DefaultLayout;
+use MrEssex\CubexSkeleton\System\Ui\Dispatcher;
 use MrEssex\CubexSkeleton\Tests\SharedTestCase;
-use MrEssex\CubexSkeleton\Ui\Layout\DefaultLayout\DefaultLayout;
 use Packaged\Context\Context;
 
 class DefaultLayoutTest extends SharedTestCase

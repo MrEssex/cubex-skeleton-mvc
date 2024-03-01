@@ -1,8 +1,8 @@
 <?php
 
-namespace MrEssex\CubexSkeleton\Ui\Layout\DefaultLayout;
+namespace MrEssex\CubexSkeleton\System\Layout\DefaultLayout;
 
-use MrEssex\CubexSkeleton\Ui\Layout\AbstractLayout;
+use MrEssex\CubexSkeleton\System\Layout\AbstractLayout;
 use Packaged\Dispatch\Dispatch;
 use Packaged\Dispatch\ResourceManager;
 

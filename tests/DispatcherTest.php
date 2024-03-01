@@ -1,7 +1,7 @@
 <?php
 namespace MrEssex\CubexSkeleton\Tests;
 
-use MrEssex\CubexSkeleton\Dispatcher;
+use MrEssex\CubexSkeleton\System\Ui\Dispatcher;
 use Packaged\Config\ConfigProviderInterface;
 use Packaged\Context\Context;
 use Packaged\Dispatch\Dispatch;

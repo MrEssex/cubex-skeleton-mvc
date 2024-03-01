@@ -1,6 +1,6 @@
 <?php
 
-namespace MrEssex\CubexSkeleton;
+namespace MrEssex\CubexSkeleton\System\Ui;
 
 use Packaged\Context\Context;
 use Packaged\Dispatch\Dispatch;

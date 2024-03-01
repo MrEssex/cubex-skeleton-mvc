@@ -1,14 +1,16 @@
 <?php
 
-namespace MrEssex\CubexSkeleton\Ui\Layout;
+namespace MrEssex\CubexSkeleton\System\Layout;
 
 use Cubex\Controller\AuthedController;
 use Cubex\Middleware\MiddlewareHandler;
-use MrEssex\CubexSkeleton\Ui\AbstractView;
-use MrEssex\CubexSkeleton\Ui\ErrorView\ErrorView;
-use MrEssex\CubexSkeleton\Ui\Layout\DefaultLayout\DefaultLayout;
+use MrEssex\CubexSkeleton\System\Layout\DefaultLayout\DefaultLayout;
+use MrEssex\CubexSkeleton\System\Layout\LayoutWrap\LayoutWrap;
+use MrEssex\CubexSkeleton\System\Ui\AbstractView;
+use MrEssex\CubexSkeleton\System\Ui\Views\ErrorView\ErrorView;
 use Packaged\Context\Context;
 use Packaged\Dispatch\Dispatch;
+use Packaged\Http\Responses\JsonResponse;
 use Packaged\I18n\TranslatableTrait;
 use Packaged\I18n\TranslatorAware;
 use Packaged\I18n\TranslatorAwareTrait;
@@ -17,6 +19,7 @@ use Packaged\Routing\Handler\FuncHandler;
 use Packaged\Routing\Handler\Handler;
 use Packaged\Ui\Element;
 use Packaged\Ui\Html\HtmlElement;
+use PackagedUI\Pagelets\PageletResponse;
 use Symfony\Component\HttpFoundation\Response;
 
 abstract class LayoutController extends AuthedController implements TranslatorAware
@@ -49,15 +52,21 @@ abstract class LayoutController extends AuthedController implements TranslatorAw
       $result = $result->render();
     }
 
-    if($this->_isAjaxResponse())
+    if($this->_isAjaxRequest())
     {
+      if($this->_isPageletRequest())
+      {
+        $result = $result instanceof PageletResponse ? $result : PageletResponse::i()->setContent($result);
+      }
+
+      $result = JsonResponse::prefixed($result);
       return parent::_prepareResponse($c, $result, $buffer);
     }
 
-    $theme = $this->getTheme();
-    $theme->setContent($result);
+    $theme = $this->getTheme()->setContent($result);
+    $wrap = $this->_getLayoutWrap()->setContent($theme);
 
-    return parent::_prepareResponse($c, $theme, $buffer);
+    return parent::_prepareResponse($c, $wrap, $buffer);
   }
 
   public function getTheme(): AbstractLayout
@@ -65,6 +74,14 @@ abstract class LayoutController extends AuthedController implements TranslatorAw
     $cubex = @$this->_cubex();
     /** @var DefaultLayout $layout */
     $layout = $cubex->resolve(DefaultLayout::class);
+    return $layout;
+  }
+
+  protected function _getLayoutWrap(): LayoutWrap
+  {
+    $cubex = @$this->_cubex();
+    /** @var LayoutWrap $layout */
+    $layout = $cubex->resolve(LayoutWrap::class);
     return $layout;
   }
 
@@ -95,10 +112,16 @@ abstract class LayoutController extends AuthedController implements TranslatorAw
       is_array($result);
   }
 
-  protected function _isAjaxResponse(): bool
+  protected function _isAjaxRequest(): bool
   {
     $c = $this->getContext();
     return $c->request()->isXmlHttpRequest();
+  }
+
+  protected function _isPageletRequest(): bool
+  {
+    $c = $this->getContext();
+    return $c->request()->headers->has('x-pagelet-request');
   }
 
   protected function _getHandler(Context $context): callable|string|Handler|null

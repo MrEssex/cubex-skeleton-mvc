@@ -1,12 +1,11 @@
 <?php
 
-use MrEssex\CubexSkeleton\Ui\Layout\DefaultLayout\DefaultLayout;
+use MrEssex\CubexSkeleton\System\Layout\LayoutWrap\LayoutWrap;
 use Packaged\Dispatch\ResourceStore;
 
 /**
- * @var DefaultLayout $this
+ * @var LayoutWrap $this
  */
-
 ?>
 
 <!doctype html>
@@ -16,13 +15,12 @@ use Packaged\Dispatch\ResourceStore;
   <meta name="viewport"
         content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="favicon" content="/favicon.ico?v=1">
   <title>Document</title>
   <?= $this->dispatch->store()->generateHtmlIncludes() ?>
 </head>
 <body>
-<main id="main">
-  <?= $this->getContent() ?>
-</main>
+<?= $this->getContent() ?>
 <?= $this->dispatch->store()->generateHtmlIncludes(ResourceStore::TYPE_JS) ?>
 </body>
 </html>

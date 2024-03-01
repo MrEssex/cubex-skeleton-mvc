@@ -1,20 +1,22 @@
 <?php
 
-namespace MrEssex\CubexSkeleton\Ui;
+namespace MrEssex\CubexSkeleton\System\Ui;
 
-use Cubex\ViewModel\TemplatedViewModel;
-use Packaged\Dispatch\Dispatch;
 use Packaged\I18n\TranslatableTrait;
 use Packaged\I18n\TranslatorAware;
 use Packaged\I18n\TranslatorAwareTrait;
+use Packaged\Ui\Html\TemplatedHtmlElement;
 use PackagedUi\BemComponent\BemComponent;
 use PackagedUi\BemComponent\BemComponentTrait;
 
-abstract class AbstractView extends TemplatedViewModel implements TranslatorAware, BemComponent
+abstract class AbstractHtmlElement extends TemplatedHtmlElement implements TranslatorAware, BemComponent
 {
   use TranslatableTrait;
   use TranslatorAwareTrait;
   use BemComponentTrait;
 
-  public function requireResources(Dispatch $dispatch): void { }
+  public function __construct()
+  {
+    $this->addClass($this->getBlockName());
+  }
 }

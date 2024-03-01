@@ -18,8 +18,10 @@
     "build": "cross-env NODE_ENV=production gulp",
     "coverage": "nyc --report=text npm run test",
     "lint": "npm run lint:ts && npm run lint:css",
-    "lint:css": "stylelint assets/scss/**/*.scss",
-    "lint:ts": "eslint --ext .ts,.tsx assets",
+    "lint:css": "stylelint assets/scss/**/*.scss src/**/*.scss",
+    "lint:ts": "npm run lint:ts:assets && npm run lint:ts:src",
+    "lint:ts:assets": "eslint --ext .ts,.tsx assets",
+    "lint:ts:src": "eslint --ext .ts,.tsx src",
     "test": "cross-env TS_NODE_PROJECT=tsconfig.test.json mocha",
     "watch": "cross-env NODE_ENV=development gulp watch"
   },

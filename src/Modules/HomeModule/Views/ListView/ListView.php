@@ -2,10 +2,7 @@
 
 namespace MrEssex\CubexSkeleton\Modules\HomeModule\Views\ListView;
 
-use MrEssex\CubexSkeleton\Modules\HomeModule\HomeModule;
-use MrEssex\CubexSkeleton\Ui\AbstractView;
-use Packaged\Dispatch\Dispatch;
-use Packaged\Dispatch\ResourceManager;
+use MrEssex\CubexSkeleton\System\Ui\AbstractView;
 
 class ListView extends AbstractView
 {
