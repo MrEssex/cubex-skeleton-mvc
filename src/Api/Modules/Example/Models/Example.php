@@ -11,6 +11,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property string $description
  * @property Carbon $created_at
  * @property Carbon $updated_at
+ * @property Carbon $deleted_at
  */
 class Example extends Model
 {
