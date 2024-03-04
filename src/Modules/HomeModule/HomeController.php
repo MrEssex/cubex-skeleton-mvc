@@ -4,6 +4,7 @@ namespace MrEssex\CubexSkeleton\Modules\HomeModule;
 
 use MrEssex\CubexSkeleton\Modules\HomeModule\Views\HomeView\HomeView;
 use MrEssex\CubexSkeleton\Modules\HomeModule\Views\ListView\ListView;
+use MrEssex\CubexSkeleton\System\Facades\DB;
 use MrEssex\CubexSkeleton\System\Layout\LayoutController;
 
 class HomeController extends LayoutController

@@ -6,7 +6,6 @@ use Cubex\ApiFoundation\Auth\ApiAuthenticator;
 use Cubex\ApiFoundation\Controller\ApiController as CubexApiController;
 use Cubex\ApiFoundation\Routing\ModuleRoute;
 use Generator;
-use MrEssex\CubexSkeleton\Api\Authenticator\Authenticator;
 use MrEssex\CubexSkeleton\Api\Modules\Example\ExampleModule;
 use Packaged\Context\Context;
 

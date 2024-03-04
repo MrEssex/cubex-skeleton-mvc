@@ -93,6 +93,9 @@ class Dependencies
     // Boot Eloquent
     $capsule->bootEloquent();
 
+    $cubex->share(Manager::class, $capsule, Cubex::MODE_IMMUTABLE);
+    $cubex->aliasAbstract(Manager::class, 'db');
+
     return $capsule;
   }
 }

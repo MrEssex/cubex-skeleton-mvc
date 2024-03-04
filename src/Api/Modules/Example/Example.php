@@ -1,6 +1,6 @@
 <?php
 
-namespace MrEssex\CubexSkeleton\Api\Modules\Example\Models;
+namespace MrEssex\CubexSkeleton\Api\Modules\Example;
 
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
@@ -17,7 +17,7 @@ class Example extends Model
 {
   protected $table = 'example';
 
-  protected $dates = ['deleted_at'];
+  protected array $dates = ['deleted_at'];
 
   protected $fillable = [
     'title',

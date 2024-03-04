@@ -3,6 +3,7 @@
 namespace MrEssex\CubexSkeleton\System;
 
 use Cubex\Logger\ErrorLogLogger;
+use Throwable;
 
 class ErrorLogger extends ErrorLogLogger
 {
@@ -27,5 +28,11 @@ class ErrorLogger extends ErrorLogLogger
   public static function exception(\Throwable $e, string $message = '', array $context = []): void
   {
     static::i()->error($message . ' - ' . $e->getMessage(), $context);
+  }
+
+  public static function asError(Throwable $message, array $context = []): void
+  {
+    $self = new self();
+    $self->error(self::formatThrowable($message), $context);
   }
 }

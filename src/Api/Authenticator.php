@@ -1,6 +1,6 @@
 <?php
 
-namespace MrEssex\CubexSkeleton\Api\Authenticator;
+namespace MrEssex\CubexSkeleton\Api;
 
 use Cubex\ApiFoundation\Auth\ApiAuthenticator;
 use Cubex\ApiTransport\Permissions\ApiPermission;
