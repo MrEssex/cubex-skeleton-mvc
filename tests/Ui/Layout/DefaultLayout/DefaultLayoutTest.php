@@ -2,6 +2,7 @@
 
 namespace MrEssex\CubexSkeleton\Tests\Ui\Layout\DefaultLayout;
 
+use Exception;
 use MrEssex\CubexSkeleton\System\Layout\DefaultLayout\DefaultLayout;
 use MrEssex\CubexSkeleton\System\Ui\Dispatcher;
 use MrEssex\CubexSkeleton\Tests\SharedTestCase;
@@ -22,7 +23,7 @@ class DefaultLayoutTest extends SharedTestCase
     {
       $layout->render();
     }
-    catch(\Exception $e)
+    catch(Exception $e)
     {
       self::assertMatchesRegularExpression('/\$_content must not be accessed before initialization/', $e->getMessage());
     }

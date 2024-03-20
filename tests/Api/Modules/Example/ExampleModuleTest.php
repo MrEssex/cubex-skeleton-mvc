@@ -30,7 +30,7 @@ class ExampleModuleTest extends SharedTestCase
     $this->assertJson($res->getContent());
 
     // assert created_at is within between request start and end
-    $createdAt = @preg_match('/"created_at":(\d+)/', (string) $res->getContent(), $matches) ? (int)$matches[1] : null;
+    $createdAt = @preg_match('/"created_at":(\d+)/', (string)$res->getContent(), $matches) ? (int)$matches[1] : null;
     $this->assertGreaterThanOrEqual($requestStart, $createdAt);
     $this->assertLessThanOrEqual($requestEnd, $createdAt);
 
@@ -38,7 +38,7 @@ class ExampleModuleTest extends SharedTestCase
     $this->assertStringContainsString('"deleted_at":null', $res->getContent());
 
     // assert updated_at is within between request start and end
-    $updatedAt = @preg_match('/"updated_at":(\d+)/', (string) $res->getContent(), $matches) ? (int)$matches[1] : null;
+    $updatedAt = @preg_match('/"updated_at":(\d+)/', (string)$res->getContent(), $matches) ? (int)$matches[1] : null;
     $this->assertGreaterThanOrEqual($requestStart, $updatedAt);
     $this->assertLessThanOrEqual($requestEnd, $updatedAt);
 

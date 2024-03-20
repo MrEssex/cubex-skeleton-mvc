@@ -3,6 +3,7 @@
 namespace MrEssex\CubexSkeleton\Api\Modules\Example\Procedures;
 
 use Cubex\ApiFoundation\Module\Procedures\AbstractProcedure;
+use Exception;
 use MrEssex\CubexSkeleton\Api\Modules\Example\Storage\Example;
 use MrEssex\CubexSkeleton\System\ErrorLogger;
 use MrEssex\CubexSkeletonTransport\Modules\Example\Payloads\CreateExamplePayload;
@@ -20,7 +21,7 @@ class CreateExample extends AbstractProcedure
     {
       $example->save();
     }
-    catch(\Exception $exception)
+    catch(Exception $exception)
     {
       ErrorLogger::asError($exception);
       return new ExampleResponse();

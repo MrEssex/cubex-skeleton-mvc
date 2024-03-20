@@ -12,7 +12,7 @@ class ErrorLogger extends ErrorLogLogger
     return new self();
   }
 
-  public static function formatThrowable(\Throwable $t): string
+  public static function formatThrowable(Throwable $t): string
   {
     return sprintf(
       "Exception message: %s%sFile: %s:%s%sTrace: %s",
@@ -25,7 +25,7 @@ class ErrorLogger extends ErrorLogLogger
     );
   }
 
-  public static function exception(\Throwable $e, string $message = '', array $context = []): void
+  public static function exception(Throwable $e, string $message = '', array $context = []): void
   {
     static::i()->error($message . ' - ' . $e->getMessage(), $context);
   }

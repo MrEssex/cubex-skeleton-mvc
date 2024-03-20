@@ -5,6 +5,7 @@ namespace MrEssex\CubexSkeleton\Tests\Services;
 use MrEssex\CubexSkeleton\Services\LocalDatabaseService;
 use Packaged\Dal\Foundation\Dao;
 use PHPUnit\Framework\TestCase;
+use ReflectionClass;
 
 class LocalDatabaseServiceTest extends TestCase
 {
@@ -13,7 +14,7 @@ class LocalDatabaseServiceTest extends TestCase
     $service = new LocalDatabaseService();
     $database = $service->registerDatabaseConnections(__DIR__ . '/../../');
 
-    $reflection = new \ReflectionClass($database);
+    $reflection = new ReflectionClass($database);
     $property = $reflection->getProperty('_configured');
 
     $this->assertTrue($property->getValue($database));
