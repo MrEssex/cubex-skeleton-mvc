@@ -90,7 +90,7 @@ abstract class LayoutController extends AuthedController implements TranslatorAw
     $middleware = new MiddlewareHandler(
       new FuncHandler(fn(Context $c): Response => parent::handle($c))
     );
-    foreach($this->_middleware() as $m)
+    foreach($this->_getMiddleware() as $m)
     {
       $middleware->add($m);
     }
@@ -98,7 +98,7 @@ abstract class LayoutController extends AuthedController implements TranslatorAw
     return $middleware->handle($c);
   }
 
-  protected function _middleware(): array
+  protected function _getMiddleware(): array
   {
     return [];
   }

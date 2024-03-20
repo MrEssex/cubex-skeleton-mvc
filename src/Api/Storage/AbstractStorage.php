@@ -13,37 +13,37 @@ abstract class AbstractStorage extends QlDao implements DalSchemaProvider
 
   public mixed $id;
 
-  public ?int $created_at = null;
+  public ?int $createdAt = null;
 
-  public ?int $updated_at = null;
+  public ?int $updatedAt = null;
 
-  public ?int $deleted_at = null;
+  public ?int $deletedAt = null;
 
   public bool $active = true;
 
-  public function save()
+  public function save(): array
   {
     if(!$this->id)
     {
-      $this->created_at = time();
+      $this->createdAt = time();
     }
 
-    $this->updated_at = time();
+    $this->updatedAt = time();
     return parent::save();
   }
 
-  public function delete()
+  public function delete(): static
   {
-    $this->deleted_at = time();
+    $this->deletedAt = time();
     $this->active = false;
     $this->save();
 
     return $this;
   }
 
-  public function restore()
+  public function restore(): static
   {
-    $this->deleted_at = null;
+    $this->deletedAt = null;
     $this->active = true;
     $this->save();
 

@@ -11,9 +11,9 @@ ApplicationResponse extends AbstractResponse
 
   public bool $active;
 
-  public int $created_at;
+  public int $createdAt;
 
-  public ?int $updated_at = null;
+  public ?int $updatedAt = null;
 
-  public ?int $deleted_at = null;
+  public ?int $deletedAt = null;
 }

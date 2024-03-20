@@ -5,7 +5,10 @@ use Cubex\Context\Context;
 use Cubex\Cubex;
 use MrEssex\CubexSkeleton\MainApplication;
 use MrEssex\CubexSkeleton\Services\Interfaces\DatabaseService;
+use MrEssex\CubexSkeleton\System\Ui\Dispatcher;
 use MrEssex\CubexSkeleton\Tests\Mocks\MockDatabaseService;
+use Packaged\DiContainer\DependencyInjector;
+use Packaged\Dispatch\Dispatch;
 use Packaged\Http\Request;
 use Packaged\I18n\Translators\ReturnKeyTranslator;
 use Packaged\I18n\Translators\Translator;
@@ -34,6 +37,12 @@ class SharedTestCase extends TestCase
     $databaseService->registerDatabaseConnections($root, $env);
     $cubex->share(DatabaseService::class, $databaseService);
 
+    $cubex->share(
+      Dispatch::class,
+      Dispatcher::create($ctx, Dispatcher::DISPATCH_PATH),
+      DependencyInjector::MODE_IMMUTABLE
+    );
+
     return $cubex;
   }
 
@@ -56,7 +65,7 @@ class SharedTestCase extends TestCase
     $this->errorLogLocationBackup = ini_set('error_log', $streamUri);
   }
 
-  public function errorLogGetContents()
+  public function errorLogGetContents(): false|string
   {
 
     ini_set('error_log', $this->errorLogLocationBackup);

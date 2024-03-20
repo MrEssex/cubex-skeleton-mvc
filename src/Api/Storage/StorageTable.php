@@ -15,10 +15,10 @@ class StorageTable extends MySQLTable
     parent::__construct($name, '');
     $this->addColumn(
       new MySQLColumn('id', MySQLColumnType::INT_UNSIGNED(), null, false, null, MySQLColumn::EXTRA_AUTO_INCREMENT),
-      new MySQLColumn('active', MySQLColumnType::TINY_INT_UNSIGNED(), null, false, 1),
-      new MySQLColumn('created_at', MySQLColumnType::INT_UNSIGNED()),
-      new MySQLColumn('updated_at', MySQLColumnType::INT_UNSIGNED(), null, true),
-      new MySQLColumn('deleted_at', MySQLColumnType::INT_UNSIGNED(), null, true)
+      new MySQLColumn('active', MySQLColumnType::TINY_INT_UNSIGNED(), 1, false, 1),
+      new MySQLColumn('createdAt', MySQLColumnType::INT_UNSIGNED(), 11),
+      new MySQLColumn('updatedAt', MySQLColumnType::INT_UNSIGNED(), 11, true),
+      new MySQLColumn('deletedAt', MySQLColumnType::INT_UNSIGNED(), 11, true)
     );
 
     $this->addKey(new MySQLKey('id', MySQLKeyType::PRIMARY(), 'id'));

@@ -11,7 +11,8 @@
     "packaged-ui/pagelets": "^2.3.11",
     "packaged/dal": "^1.18",
     "packaged/dal-schema": "dev-master",
-    "packaged/dispatch": "^2.20.0"
+    "packaged/dispatch": "^2.20.0",
+    "firebase/php-jwt": "^6.10"
   },
   "require-dev": {
     "filp/whoops": "2.15.3",

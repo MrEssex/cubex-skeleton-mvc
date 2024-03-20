@@ -13,7 +13,7 @@ class TextResourceRoute extends Route
 {
   public function __construct()
   {
-    $this->add(FuncCondition::i(static function (Context $context) {
+    $this->add(FuncCondition::i(static function (Context $context): bool {
       $route = [
         'robots.txt',
       ];
