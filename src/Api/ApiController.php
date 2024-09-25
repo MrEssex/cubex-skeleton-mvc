@@ -6,7 +6,7 @@ use Cubex\ApiFoundation\Auth\ApiAuthenticator;
 use Cubex\ApiFoundation\Controller\ApiController as CubexApiController;
 use Cubex\ApiFoundation\Routing\ModuleRoute;
 use Generator;
-use MrEssex\CubexSkeleton\Api\Modules\Example\ExampleModule;
+use MrEssex\CubexSkeleton\Api\Modules\Event\EventModule;
 use Packaged\Context\Context;
 
 class ApiController extends CubexApiController
@@ -15,7 +15,7 @@ class ApiController extends CubexApiController
 
   protected function _yieldModules(): Generator|array
   {
-    yield new ExampleModule();
+    yield new EventModule();
   }
 
   protected function _generateRoutes()

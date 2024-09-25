@@ -7,7 +7,9 @@ use Cubex\ApiTransport\Responses\AbstractResponse;
 class
 ApplicationResponse extends AbstractResponse
 {
-  public mixed $id;
+  public int $id;
+
+  public string $hashId;
 
   public bool $active;
 

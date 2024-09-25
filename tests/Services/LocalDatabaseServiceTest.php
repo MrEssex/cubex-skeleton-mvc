@@ -2,7 +2,7 @@
 
 namespace MrEssex\CubexSkeleton\Tests\Services;
 
-use MrEssex\CubexSkeleton\Services\LocalDatabaseService;
+use MrEssex\CubexSkeleton\Services\DatabaseService\LocalDatabaseService;
 use Packaged\Dal\Foundation\Dao;
 use PHPUnit\Framework\TestCase;
 use ReflectionClass;

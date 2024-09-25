@@ -3,6 +3,7 @@
 namespace MrEssex\CubexSkeleton\System\Layout;
 
 use Packaged\Dispatch\Dispatch;
+use Packaged\Dispatch\ResourceManager;
 use Packaged\I18n\TranslatableTrait;
 use Packaged\I18n\TranslatorAware;
 use Packaged\I18n\TranslatorAwareTrait;
@@ -20,7 +21,7 @@ abstract class AbstractLayout extends Element implements TranslatorAware
     $this->_registerResources($this->dispatch);
   }
 
-  abstract protected function _registerResources(Dispatch $dispatch): void;
+  abstract public function getName(): string;
 
   public function setContent(mixed $content): static
   {
@@ -31,5 +32,12 @@ abstract class AbstractLayout extends Element implements TranslatorAware
   public function getContent(): mixed
   {
     return $this->_content;
+  }
+
+  protected function _registerResources(Dispatch $dispatch): void
+  {
+    ResourceManager::resources([], $dispatch)
+      ->requireCss('index.min.css')
+      ->requireJs('index.min.js');
   }
 }

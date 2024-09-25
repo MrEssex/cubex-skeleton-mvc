@@ -8,10 +8,8 @@ use Packaged\Dispatch\ResourceManager;
 
 class DefaultLayout extends AbstractLayout
 {
-  protected function _registerResources(Dispatch $dispatch): void
+  public function getName(): string
   {
-    ResourceManager::resources([], $dispatch)
-      ->requireCss('main.min.css')
-      ->requireJs('main.min.js');
+    return 'default';
   }
 }

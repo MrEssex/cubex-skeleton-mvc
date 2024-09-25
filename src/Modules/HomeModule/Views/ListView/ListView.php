@@ -2,7 +2,7 @@
 
 namespace MrEssex\CubexSkeleton\Modules\HomeModule\Views\ListView;
 
-use MrEssex\CubexSkeleton\System\Ui\AbstractView;
+use MrEssex\CubexSkeleton\System\AbstractView;
 
 class ListView extends AbstractView
 {

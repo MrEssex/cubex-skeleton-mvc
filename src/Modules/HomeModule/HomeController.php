@@ -4,6 +4,7 @@ namespace MrEssex\CubexSkeleton\Modules\HomeModule;
 
 use MrEssex\CubexSkeleton\Modules\HomeModule\Views\HomeView\HomeView;
 use MrEssex\CubexSkeleton\Modules\HomeModule\Views\ListView\ListView;
+use MrEssex\CubexSkeleton\System\Layout\DashboardLayout\DashboardLayout;
 use MrEssex\CubexSkeleton\System\Layout\LayoutController;
 
 class HomeController extends LayoutController
@@ -26,9 +27,9 @@ class HomeController extends LayoutController
 
   public function getList(): ListView
   {
+    $this->_theme = $this->_cubex()->resolve(DashboardLayout::class);
     /** @var ListView $listView */
     $listView = $this->_cubex()->resolve(ListView::class);
-
     return $listView;
   }
 }

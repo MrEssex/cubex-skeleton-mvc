@@ -1,5 +1,6 @@
 <?php
 
+use MrEssex\CubexSkeleton\Components\Ui\Button;
 use MrEssex\CubexSkeleton\Modules\HomeModule\Views\HomeView\HomeView;
 
 /**
@@ -9,4 +10,13 @@ use MrEssex\CubexSkeleton\Modules\HomeModule\Views\HomeView\HomeView;
 
 This is the Home View
 
-<a href="/list">Test</a>
+<?= Button::i($this->getCubex())
+  ->link('/list')
+  ->content('Test') ?>
+
+<h4>As a Pagelet</h4>
+
+<?= Button::i($this->getCubex())
+  ->link('/list')
+  ->content('Test')
+  ->pagelet() ?>

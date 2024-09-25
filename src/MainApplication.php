@@ -3,10 +3,11 @@
 namespace MrEssex\CubexSkeleton;
 
 use Cubex\Application\Application;
+use Cubex\Events\Handle\ResponsePreSendHeadersEvent;
 use MrEssex\CubexSkeleton\Routing\ResourceRoute;
 use MrEssex\CubexSkeleton\Routing\Router;
 use MrEssex\CubexSkeleton\Routing\TextResourceRoute;
-use MrEssex\CubexSkeleton\System\Ui\Dispatcher;
+use MrEssex\CubexSkeleton\System\Dispatcher;
 use Packaged\Context\Context;
 use Packaged\Helpers\ValueAs;
 use Packaged\Http\Request;
@@ -64,6 +65,12 @@ class MainApplication extends Application
 
     // Post resolvers
     Dependencies::postResolve($cubex);
+
+    // Headers
+    $cubex->listen(
+      ResponsePreSendHeadersEvent::class,
+      fn(ResponsePreSendHeadersEvent $event): SymfonyResponse => Dependencies::setupHeaders($event)
+    );
   }
 
   public function handle(Context $c): SymfonyResponse

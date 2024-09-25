@@ -3,7 +3,6 @@ const {positioning} = require('stylelint-config-clean-order/src/groups/positioni
 const {layout} = require('stylelint-config-clean-order/src/groups/layout');
 const {boxModel} = require('stylelint-config-clean-order/src/groups/box-model');
 const {typography} = require('stylelint-config-clean-order/src/groups/typography');
-const {apperance} = require('stylelint-config-clean-order/src/groups/apperance');
 const {svgPresentation} = require('stylelint-config-clean-order/src/groups/svg-presentation');
 const {transition} = require('stylelint-config-clean-order/src/groups/transition');
 
@@ -14,7 +13,6 @@ const propertyGroups = [
   layout,
   boxModel,
   typography,
-  apperance,
   svgPresentation,
   transition
 ];

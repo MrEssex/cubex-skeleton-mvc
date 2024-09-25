@@ -1,5 +1,5 @@
-name: "PHP  Build"
-description: "Builds the project with PHP  and Node"
+name: "PHP Build"
+description: "Builds the project with PHP and Node"
 
 inputs:
   php_version:

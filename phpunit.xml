@@ -16,6 +16,7 @@
   <source>
     <include>
       <directory>src/</directory>
+      <directory>components/</directory>
       <directory>transport/</directory>
     </include>
   </source>

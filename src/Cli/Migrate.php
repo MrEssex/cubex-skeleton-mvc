@@ -4,7 +4,7 @@ namespace MrEssex\CubexSkeleton\Cli;
 
 use Exception;
 use MrEssex\CubexCli\ConsoleCommand;
-use MrEssex\CubexSkeleton\Services\LocalDatabaseService;
+use MrEssex\CubexSkeleton\Services\DatabaseService\LocalDatabaseService;
 use Packaged\Dal\Exceptions\DalResolver\ConnectionNotFoundException;
 use Packaged\Dal\Exceptions\DalResolver\DataStoreNotFoundException;
 use Packaged\Dal\Foundation\Dao;

@@ -2,7 +2,7 @@
 
 namespace MrEssex\CubexSkeleton\Tests\Mocks;
 
-use MrEssex\CubexSkeleton\Services\Interfaces\DatabaseService;
+use MrEssex\CubexSkeleton\Services\DatabaseService\DatabaseService;
 use Packaged\Dal\Foundation\Dao;
 
 class MockDatabaseService implements DatabaseService

@@ -15,6 +15,7 @@ class StorageTable extends MySQLTable
     parent::__construct($name, '');
     $this->addColumn(
       new MySQLColumn('id', MySQLColumnType::INT_UNSIGNED(), null, false, null, MySQLColumn::EXTRA_AUTO_INCREMENT),
+      new MySQLColumn('hashId', MySQLColumnType::VARCHAR(), 11, true),
       new MySQLColumn('active', MySQLColumnType::TINY_INT_UNSIGNED(), 1, false, 1),
       new MySQLColumn('createdAt', MySQLColumnType::INT_UNSIGNED(), 11),
       new MySQLColumn('updatedAt', MySQLColumnType::INT_UNSIGNED(), 11, true),
@@ -22,5 +23,6 @@ class StorageTable extends MySQLTable
     );
 
     $this->addKey(new MySQLKey('id', MySQLKeyType::PRIMARY(), 'id'));
+    $this->addKey(new MySQLKey('hashId', MySQLKeyType::UNIQUE(), 'hashId'));
   }
 }

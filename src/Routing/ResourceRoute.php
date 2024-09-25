@@ -25,12 +25,11 @@ class ResourceRoute extends Route
   public function getHandler(): FuncHandler
   {
     return new FuncHandler(static function (Context $context) {
-      $brand = $context->request()->headers->get('x-wis-brand');
-      $path = Path::system($context->getProjectRoot(), 'public', $brand, $context->request()->path());
+      $path = Path::system($context->getProjectRoot(), 'public', $context->request()->path());
 
       if(!file_exists($path))
       {
-        $path = Path::system($context->getProjectRoot(), 'public', $context->request()->path());
+        return null;
       }
 
       return ResourceFactory::fromFile($path);

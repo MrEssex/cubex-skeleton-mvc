@@ -28,7 +28,13 @@ module.exports = {
         'no-underscore-dangle': 'off',
         'import/prefer-default-export': 'off',
         'comma-dangle': ['error', 'never'],
-        '@typescript-eslint/comma-dangle': ['error', 'never']
+        'import/no-extraneous-dependencies': 'off',
+        '@typescript-eslint/no-explicit-any': 'off',
+        '@typescript-eslint/comma-dangle': ['error', 'never'],
+        '@typescript-eslint/no-unsafe-assignment': 'off',
+        '@typescript-eslint/no-unsafe-member-access': 'off',
+        '@typescript-eslint/no-unsafe-call': 'off',
+        '@typescript-eslint/lines-between-class-members': 'off'
       }
     }
   ]

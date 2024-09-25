@@ -2,7 +2,7 @@
 
 namespace MrEssex\CubexSkeleton\Tests\Ui\ErrorView;
 
-use MrEssex\CubexSkeleton\System\Ui\Views\ErrorView\ErrorView;
+use MrEssex\CubexSkeleton\System\ErrorView\ErrorView;
 use MrEssex\CubexSkeleton\Tests\SharedTestCase;
 use Packaged\Http\Request;
 
