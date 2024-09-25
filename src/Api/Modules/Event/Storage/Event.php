@@ -13,8 +13,9 @@ use Packaged\DalSchema\Table;
 
 class Event extends AbstractStorage
 {
-  public ?string $ip;
-  public ?string $page;
+  public ?string $ip = null;
+  public ?string $page = null;
+  public ?string $type = null;
 
   protected function _apiResponseClass(): EventResponse
   {
@@ -26,7 +27,8 @@ class Event extends AbstractStorage
     $tbl = new StorageTable($this->getTableName());
     $tbl->addColumn(
       new MySQLColumn('ip', MySQLColumnType::VARCHAR(), 16, false),
-      new MySQLColumn('page', MySQLColumnType::VARCHAR(), 255, false)
+      new MySQLColumn('page', MySQLColumnType::VARCHAR(), 255, false),
+      new MySQLColumn('type', MySQLColumnType::VARCHAR(), 255, false)
     );
 
     $tbl->addKey(new MySQLKey('ip', MySQLKeyType::INDEX(), 'ip'));

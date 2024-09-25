@@ -7,9 +7,9 @@ use stdClass;
 
 class CreateEventPayload extends AbstractPayload
 {
-  public ?string $n;
-  public ?string $u;
-  public ?string $d;
-  public ?string $r;
-  public ?stdClass $p;
+  public ?string $n = null;
+  public ?string $u = null;
+  public ?string $d = null;
+  public ?string $r = null;
+  public ?stdClass $p = null;
 }

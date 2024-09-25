@@ -30,8 +30,8 @@ class DispatcherTest extends SharedTestCase
     $dispatch = Dispatcher::create($ctx);
 
     // Add a resource
-    ResourceManager::resources([], $dispatch)->requireCss('main.min.css');
-    ResourceManager::resources([], $dispatch)->requireJs('main.min.js');
+    ResourceManager::resources([], $dispatch)->requireCss('index.min.css');
+    ResourceManager::resources([], $dispatch)->requireJs('index.min.js');
 
     $resources = array_merge(
       $dispatch->store()->getResources(ResourceStore::TYPE_CSS),
@@ -40,8 +40,8 @@ class DispatcherTest extends SharedTestCase
 
     self::assertNotEmpty($resources);
     self::assertCount(2, $resources);
-    self::assertMatchesRegularExpression('/_\/r\/r\/(.*)?\/main.min.css/', array_key_first($resources));
-    self::assertMatchesRegularExpression('/_\/r\/r\/(.*)?\/main.min.js/', array_key_last($resources));
+    self::assertMatchesRegularExpression('/_\/r\/r\/(.*)?\/index.min.css/', array_key_first($resources));
+    self::assertMatchesRegularExpression('/_\/r\/r\/(.*)?\/index.min.js/', array_key_last($resources));
   }
 
   public function testCreateDefault(): void

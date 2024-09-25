@@ -21,10 +21,10 @@ class CreateEvent extends AbstractProcedure
   public function execute(CreateEventPayload $pl): EventResponse
   {
 
-    //    if($this->_trackedInLastHour($pl))
-    //    {
-    //      return new EventResponse();
-    //    }
+    if($this->_trackedInLastHour($pl))
+    {
+      return new EventResponse();
+    }
 
     try
     {
@@ -34,6 +34,7 @@ class CreateEvent extends AbstractProcedure
       $event = new Event();
       $event->ip = $ip;
       $event->page = $this->_getPage($pl);
+      $event->type = $pl->n;
       $event->save();
 
       /** @var EventResponse $res */
@@ -86,6 +87,11 @@ class CreateEvent extends AbstractProcedure
 
   private function _getPage(CreateEventPayload $pl): string
   {
+    if($pl->u === null)
+    {
+      return 'unknown';
+    }
+
     $parts = explode('/', $pl->u);
     $last = Arrays::last($parts);
     if($last === '')
